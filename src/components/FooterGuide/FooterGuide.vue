@@ -1,7 +1,7 @@
 <template>
     <div>
         <footer class="footer_guide border-1px">
-            <a href="javascript:;" class="guide_item" @click="gochange('/profile')" :class="{on:isflag('/profile')}">
+            <a href="javascript:;" class="guide_item" @click="gochange('/msite')" :class="{on:isflag('/msite')}">
                 <span class="item_icon">
                     <i class="iconfont icon-waimai"></i>
                 </span>
@@ -19,7 +19,7 @@
                 </span>
                 <span>订单</span>
             </a>
-            <a href="javascript:;" class="guide_item" @click="gochange('/msite')" :class="{on:isflag('/msite')}">
+            <a href="javascript:;" class="guide_item" @click="gochange('/profile')" :class="{on:isflag('/profile')}">
                 <span class="item_icon">
                     <i class="iconfont icon-geren"></i>
                 </span>
