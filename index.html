@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <!-- 移动端viewport视图-->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,u ser-scalable=no">
+    <!-- <meta name="viewport" content="width=device-width,initial-scale=1.0"> -->
+
+    <title>myshop</title>
+
+    <!-- 引入项目的字体图标 -->
+    <link rel="stylesheet" href="http://at.alicdn.com/t/font_518606_6676bmcalnrhehfr.css">
+
+    <!-- 引入初始化CSS（静态static中） -->
+    <link rel="stylesheet" href="/static/css/reset.css">
+    
+    <!-- 手指触动屏幕300ms的延迟问题 -->
+    <script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+      <script>
+      if ('addEventListener' in document){ 
+            document.addEventListener('DOMContentLoaded', function() {
+                FastClick.attach(document.body);
+            }, false);
+      }
+      if(!window.Promise) {
+        document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2es6-promise.min.js" '+'>'+'<'+'/'+'script>');
+      }
+    </script>
+
+    
+  </head>
+  <body>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
