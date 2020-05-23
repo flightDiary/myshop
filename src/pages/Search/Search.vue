@@ -1,11 +1,7 @@
 <template>
      <div>
       <section class="search">
-        <!-- <header class="header">
-          <a class="header_title">
-            <span class="header_title_text">搜索</span>
-          </a>
-        </header> -->
+        
         <HeaderTop :title="mytitle"></HeaderTop>
 
         <form class="search_form" action="#">

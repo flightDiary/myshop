@@ -9,6 +9,7 @@ import Profile from '../pages/Profile/Profile.vue'
 // import Search from '../pages/Search/Search.vue'
 //在build的webpack.base.conf.js里设置了 '@': resolve('src'),所以可以简写为
 import Search from '@/pages/Search/Search.vue'
+import Login from '@/pages/Login/Login.vue'
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ export default new Router({
       name:'search',
       component:Search
     },
+    {
+      path:'/login',
+      name:'login',
+      component:Login
+    }
    
 
   ]

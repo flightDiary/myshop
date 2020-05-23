@@ -59,7 +59,7 @@ export default {
 
 
 //scoped样式只能在当前组件里面使用 特别是在框架里的时候要更改样式的时候 scoped需要灵活运用 框架里面更改样式采用 /deep/深度选择器
-<style scoped  lang='stylus' >
+<style lang='stylus' >
         .msite_header
             background-color #02a774
             position fixed
