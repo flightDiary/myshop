@@ -42,13 +42,10 @@ export default {
             this.$router.replace(paths) //这个把替换之前的栈  保留一个  提高性能
         },
         isflag(paths){
-            console.log(this.$route.path===paths)
+            // console.log(this.$route.path===paths)
             return this.$route.path===paths
-        }
-
-        
+        }        
     }
-
 };
 </script>
 
