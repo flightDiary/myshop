@@ -4,12 +4,16 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 
+//引入vuex  的store
+import store from './store';
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  //挂载store
+  store,
   components: { App },
   template: '<App/>'
 })

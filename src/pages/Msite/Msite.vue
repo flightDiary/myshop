@@ -1,9 +1,10 @@
 <template>
     <div class="on">
     <section class="msite">
-        
-        <HeaderTOP :title="mytitle">
+       
+        <HeaderTOP :title="address.name">
           <!--router-link组件支持用户在具有路由功能的应用中点击导航。通过to属性指定目标地址，默认渲染为带有正确连接的 -->
+          
           <router-link slot="left" to='./search' class="header_search">      
             <i class="iconfont icon-sousuo"></i>
           </router-link>
@@ -123,6 +124,7 @@
             <div class="swiper-pagination"></div>
           </div>
         </nav>
+        
         <ShopList></ShopList>
     </section>
     </div>
@@ -132,6 +134,10 @@
 <script>
   import HeaderTOP from '../../components/HeaderTop/HeaderTop.vue'
   import ShopList from '../../components/ShopList/ShopList'
+  
+  //在安装时安装的npm i vuex，所以引的时候也应该引的vuex
+  import {mapState} from 'vuex'
+  
 
   //轮播图插件
   // // 第一步引入swiper插件
@@ -145,7 +151,13 @@
           mytitle:"昌平区北七家宏福科技园(337省道北)"
         }
       },
+      
+      computed: {   //主要映射 state  getters 'userInfo' 
+      ...mapState(['address'])
+    },
+
       mounted(){
+        //轮播图
         new Swiper ('.swiper-container', {
           // direction: 'vertical', // 垂直切换选项
           loop: false, // 循环模式选项
@@ -153,7 +165,12 @@
           pagination: {
           el: '.swiper-pagination',
           }, 
-        })
+        }),
+
+        //vuex的异步请求
+        this.$store.dispatch('getAddress')
+        // this.$store.dispatch('getCategorys')
+        // this.$store.dispatch('getShops')
       },
       components:{
         HeaderTOP,
