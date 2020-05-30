@@ -8,8 +8,8 @@ import {
 
 import {
     reqAddress,
-    // reqCategory,
-    // reqShops,
+    reqCategory,
+    reqShops,
     // reqUserInfo,
     // reqLogout,
     // reqShopGoods,
@@ -35,7 +35,7 @@ export default {
 
         //result 就是发送ajax返回来的数据
         let result=await reqAddress(params)
-        console.log(result)
+        // console.log(result)
 
         // commit 指mutations里面的方法
         commit(RECEIVE_ADDRESS,{
@@ -44,32 +44,33 @@ export default {
         })
     },
 
-    // 方法二 触发分类数组 categorys获取产品分类
-    // async getCategorys(commit){
-
-    //     //发送ajax
-    //     let result=await reqCategory()
-
-    //     //commit('mutation里面的方法名字','传递的对象')
-    //     commit(RECEIVE_CATEGORYS,{
-    //         categorys:result.data
-    //     })
-
-    // },
-
+    // 方法二 触发分类数组(轮播图里的数据) categorys获取产品分类
+    async getCategorys({commit}){
+        //发送ajax
+        let result=await reqCategory()
+        console.log(result)
+        //commit('mutation里面的方法名字','传递的对象')
+        commit(RECEIVE_CATEGORYS,{
+            categorysx:result.data
+        })
+    },
 
     // export const  reqShops =({latitude,longitude}) =>ajax('/api/shops',{latitude,longitude})
+
     // 方法三 触发商家数组(获取商家) shops
-    // async getShops(commit,state){
+    async getShops({commit,state}){
 
-    //     let {latitude,longitude}=state
+        // let latitude=state.latitude
+        // let longitude=state.longitude
+        let {latitude,longitude}=state
 
-    //     let result=await reqShops({latitude,longitude})
+        let result=await reqShops({latitude,longitude})
+        // console.log(result)
 
-    //     commit(RECEIVE_SHOPS,{
-    //         shop:result.data
-    //     })
-    // }
+        commit(RECEIVE_SHOPS,{
+            shop:result.data
+        })
+    }
 
     
 
