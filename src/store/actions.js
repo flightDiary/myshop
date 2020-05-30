@@ -48,7 +48,7 @@ export default {
     async getCategorys({commit}){
         //发送ajax
         let result=await reqCategory()
-        console.log(result)
+        // console.log(result)
         //commit('mutation里面的方法名字','传递的对象')
         commit(RECEIVE_CATEGORYS,{
             categorysx:result.data
@@ -65,10 +65,10 @@ export default {
         let {latitude,longitude}=state
 
         let result=await reqShops({latitude,longitude})
-        // console.log(result)
+        console.log(result)
 
         commit(RECEIVE_SHOPS,{
-            shop:result.data
+            shops:result.data
         })
     }
 

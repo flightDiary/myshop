@@ -1,238 +1,78 @@
 <template>
-      <div class="msite_shop_list">
-          <div class="shop_header">
-            <i class="iconfont icon-xuanxiang"></i>
-            <span class="shop_header_title">附近商家</span>
-          </div>
+  
           <div class="shop_container">
-            <ul class="shop_list">
-              <li class="shop_li border-1px">
+            <ul class="shop_list" v-for="(items,index) in shops" :key="index">
+              <router-link class="shop_li border-1px" to=''>
                 <a>
                   <div class="shop_left">
                     <img class="shop_img" src="./images/shop/1.jpg">
                   </div>
                   <div class="shop_right">
-                    <section class="shop_detail_header">
-                      <h4 class="shop_title ellipsis">锄禾日当午，汗滴禾下土</h4>
-                      <ul class="shop_detail_ul">
-                        <li class="supports">保</li>
-                        <li class="supports">准</li>
-                        <li class="supports">票</li>
-                      </ul>
-                    </section>
-                    <section class="shop_rating_order">
-                      <section class="shop_rating_order_left">
-                        <div class="star star-24">
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item half"></span>
-                          <span class="star-item off"></span>
-                        </div>
-                        <div class="rating_section">
-                          3.6
-                        </div>
-                        <div class="order_section">
-                          月售106单
-                        </div>
-                      </section>
-                      <section class="shop_rating_order_right">
-                        <span class="delivery_style delivery_right">硅谷专送</span>
-                      </section>
-                    </section>
-                    <section class="shop_distance">
-                      <p class="shop_delivery_msg">
-                        <span>¥20起送</span>
-                        <span class="segmentation">/</span>
-                        <span>配送费约¥5</span>
-                      </p>
-                    </section>
+                  <section class="shop_detail_header">
+                  <h4 class="shop_title ellipsis">{{items.name}}</h4>
+                  <ul class="shop_detail_ul">
+                    <li class="supports" v-for="(item,index) in items.supports" :key="index">
+                      {{item.icon_name}}
+                    </li>
+                  </ul>
+                  </section>
+                  <section class="shop_rating_order">
+                  <section class="shop_rating_order_left">                    
+                    <div class="star star-24">
+                      <span class="star-item on"></span>
+                      <span class="star-item on"></span>
+                      <span class="star-item on"></span>
+                      <span class="star-item half"></span>
+                      <span class="star-item off"></span>
+                    </div>
+                    <div class="rating_section">{{items.rating}}</div>
+                    <div class="order_section">月售{{items.recent_order_num}}单</div>
+                  </section>
+
+                  <section class="shop_rating_order_right">
+                    <span class="delivery_style delivery_right">{{items.delivery_mode.text}}</span>
+                  </section>
+                  </section>
+
+                  <section class="shop_distance">
+                  <p class="shop_delivery_msg">
+                    <span>¥{{items.float_minimum_order_amount}}起送</span>
+                    <span class="segmentation">/</span>
+                    <span>配送费约¥{{items.float_delivery_fee}}</span>
+                  </p>
+                  </section>
                   </div>
                 </a>
-              </li>
-              <li class="shop_li border-1px">
-                <a>
-                  <div class="shop_left">
-                    <img class="shop_img" src="./images/shop/2.jpg">
-                  </div>
-                  <div class="shop_right">
-                    <section class="shop_detail_header">
-                      <h4 class="shop_title ellipsis">锄禾日当午，汗滴禾下土</h4>
-                      <ul class="shop_detail_ul">
-                        <li class="supports">保</li>
-                        <li class="supports">准</li>
-                        <li class="supports">票</li>
-                      </ul>
-                    </section>
-                    <section class="shop_rating_order">
-                      <section class="shop_rating_order_left">
-                        <div class="star star-24">
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item off"></span>
-                        </div>
-                        <div class="rating_section">
-                          4.1
-                        </div>
-                        <div class="order_section">
-                          月售106单
-                        </div>
-                      </section>
-                      <section class="shop_rating_order_right">
-                        <span class="delivery_style delivery_right">硅谷专送</span>
-                      </section>
-                    </section>
-                    <section class="shop_distance">
-                      <p class="shop_delivery_msg">
-                        <span>¥20起送</span>
-                        <span class="segmentation">/</span>
-                        <span>配送费约¥5</span>
-                      </p>
-                    </section>
-                  </div>
-                </a>
-              </li>
-              <li class="shop_li border-1px">
-                <a>
-                  <div class="shop_left">
-                    <img class="shop_img" src="./images/shop/3.jpg">
-                  </div>
-                  <div class="shop_right">
-                    <section class="shop_detail_header">
-                      <h4 class="shop_title ellipsis">锄禾日当午，汗滴禾下土</h4>
-                      <ul class="shop_detail_ul">
-                        <li class="supports">保</li>
-                        <li class="supports">准</li>
-                        <li class="supports">票</li>
-                      </ul>
-                    </section>
-                    <section class="shop_rating_order">
-                      <section class="shop_rating_order_left">
-                        <div class="star star-24">
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item off"></span>
-                          <span class="star-item off"></span>
-                        </div>
-                        <div class="rating_section">
-                          3.2
-                        </div>
-                        <div class="order_section">
-                          月售106单
-                        </div>
-                      </section>
-                      <section class="shop_rating_order_right">
-                        <span class="delivery_style delivery_right">硅谷专送</span>
-                      </section>
-                    </section>
-                    <section class="shop_distance">
-                      <p class="shop_delivery_msg">
-                        <span>¥20起送</span>
-                        <span class="segmentation">/</span>
-                        <span>配送费约¥5</span>
-                      </p>
-                    </section>
-                  </div>
-                </a>
-              </li>
-              <li class="shop_li border-1px">
-                <a>
-                  <div class="shop_left">
-                    <img class="shop_img" src="./images/shop/4.jpg">
-                  </div>
-                  <div class="shop_right">
-                    <section class="shop_detail_header">
-                      <h4 class="shop_title ellipsis">锄禾日当午，汗滴禾下土</h4>
-                      <ul class="shop_detail_ul">
-                        <li class="supports">保</li>
-                        <li class="supports">准</li>
-                        <li class="supports">票</li>
-                      </ul>
-                    </section>
-                    <section class="shop_rating_order">
-                      <section class="shop_rating_order_left">
-                        <div class="star star-24">
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item on"></span>
-                          <span class="star-item half"></span>
-                          <span class="star-item off"></span>
-                        </div>
-                        <div class="rating_section">
-                          3.6
-                        </div>
-                        <div class="order_section">
-                          月售106单
-                        </div>
-                      </section>
-                      <section class="shop_rating_order_right">
-                        <span class="delivery_style delivery_right">硅谷专送</span>
-                      </section>
-                    </section>
-                    <section class="shop_distance">
-                      <p class="shop_delivery_msg">
-                        <span>¥20起送</span>
-                        <span class="segmentation">/</span>
-                        <span>配送费约¥5</span>
-                      </p>
-                    </section>
-                  </div>
-                </a>
-              </li>
+              </router-link>
             </ul>
           </div>
-        </div>
+       
 </template>
 
 <script>
-export default {
-    props: {
+import {mapState} from 'vuex'
 
-    },
+export default {
     data() {
         return {
-
         };
     },
     computed: {
-
+    ...mapState(['shops']),
+    
     },
     created() {
 
     },
     mounted() {
-
+      this.$store.dispatch('getShops')
     },
-    watch: {
 
-    },
-    methods: {
-
-    },
-    components: {
-
-    },
 };
 </script>
 
 <style scoped  lang='stylus' >
 @import '../../common/stylus/mixins.styl';
-.msite_shop_list
-            top-border-1px(#e4e4e4)
-            margin-top 10px
-            background #fff
-            .shop_header
-              padding 10px 10px 0
-              .shop_icon
-                margin-left 5px
-                color #999
-              .shop_header_title
-                color #999
-                font-size 14px
-                line-height 20px
             .shop_container
               margin-bottom 50px
               .shop_list

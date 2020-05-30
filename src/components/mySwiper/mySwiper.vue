@@ -39,7 +39,7 @@
     computed: {
       ...mapState(['categorys']),
       
-      //因为categorys是个双对象，这里要拆分一下使之一次获取定量的数据在同一页，方便轮播图翻页
+      //使页面一次获取8条数据
       categoryArr(){ 
         let bigArr=[]
         let smallArr=[]
@@ -72,7 +72,7 @@
           this.$nextTick(v=>{
             var mySwiper=new Swiper ('.swiper-container', {
               // direction: 'vertical', // 垂直切换选项
-              loop: false, // 循环模式选项
+              loop: true, // 循环模式选项
               // 如果需要分页器
               pagination: {
               el: '.swiper-pagination',

@@ -21,9 +21,10 @@ export default {
         state.categorys=categorysx
         // console.log(categorysx)
     },
-    //存储商家信息
+    //存储商家信息RECEIVE_SHOPS
     [RECEIVE_SHOPS](state, { shops }) {
         state.shops = shops
+        console.log(shops)
     },
     // //存储个人信息
     // [RECEIVE_USER_INFO](state, { userInfo }) {
