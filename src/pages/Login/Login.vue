@@ -52,14 +52,15 @@
                     <span class="switch_text" >{{isShowPwd?'abc':'...'}}</span>
                   </div>
                 </section>
-
                 <section class="login_message">
                   <input  v-model="captcha" type="text" maxlength="11" placeholder="验证码">
                   <img class="get_verification" src="http://localhost:4000/captcha" alt="captcha" @click="getCaptcha">
                 </section>
               </section>
             </div>
-            <button class="login_submit">登录</button>
+
+
+            <button class="login_submit" @click.prevent="login">登录</button>
           </form>
           <a href="javascript:;" class="about_us">关于我们</a>
         </div>
@@ -68,12 +69,16 @@
         </a>
       </div>
     </section>
+
+    <!-- 弹框 -->
+    <AlertTip :alertText='msg' v-show="showAlert" @closeAlert='closeAlert'></AlertTip>
   </div>
 </template>
 
 <script>
 
-import {reqSendCode} from '../../api/index'
+import {reqSendCode,reqSmsLogin,reqPwdLogin} from '../../api/index'
+import AlertTip from '../../components/AlertTip/AlertTip'
 
 export default {
     props: {
@@ -81,7 +86,7 @@ export default {
     },
     data() {
         return {
-          isway:false, //切换手机登陆还是账号密码登陆
+          isway:true, //切换手机登陆还是账号密码登陆
           phone:'',//手机号
           code:'',//手机号短信验证码
           computedTime:0,//发送验证码倒计时
@@ -91,7 +96,9 @@ export default {
           pwd:'',//密码
           captcha:'',//验证码
 
-          isShowPwd:false//密码是否可见
+          isShowPwd:false,//密码是否可见
+          msg:'',//父组件传递给弹窗组件得值
+          showAlert:false,//控制弹窗是否可见
         };
     },
     computed: {
@@ -111,6 +118,19 @@ export default {
 
     },
     methods: {
+
+      //触发弹窗
+      openAlert(msg){
+        this.showAlert=true
+        this.msg=msg
+        console.log(msg)
+      },
+
+      //关闭弹窗
+      closeAlert(){
+        this.showAlert=false
+      },
+
       //获取手机验证码
       async getCode(){
         //先判断一下倒计时computedTime是否在运行 当computedTime==0时表示停止,此时获取验证码
@@ -136,9 +156,56 @@ export default {
         event.target.src='http://localhost:4000/captcha?time='+Date.now()        
       },
 
+      //登陆提交事件功能
+      async login(){
+        let result
+        let {isway,phone,code,name,pwd,captcha}=this
+        //判断登陆方式
+        if(isway){ //手机号登陆
+          if(!phone){
+            this.openAlert('手机号不能为空')
+            return
+          }
+          if(!code){
+             this.openAlert('验证码不对')
+            return
+          }
+          //phone,code是页面拿到的数据，可以直接发送ajax把数据存到vuex里
+          result=await reqSmsLogin(phone,code)
+          console.log(result)
+        }else{ //密码登陆（默认aaa密码123）
+          if(!name){
+            this.openAlert('用户名不对')
+            // alert('用户名不对')
+            return
+          }
+          if(!pwd){
+            this.openAlert('密码不对')
+            // alert('密码不对')
+            return
+          }
+          if(!captcha){
+            this.openAlert('图形验证码不对')
+            // alert('图形验证码不对')
+            return
+          }
+          result=await reqPwdLogin({name,pwd,captcha})
+          console.log(result)
+        }
+
+        //ajax发送请求成功，把返回来的数据放到vuex里命名userinfo
+        if(result.code==0){
+          let userinfo=result.data
+          this.$store.dispatch('recordUser',userinfo)
+          this.$router.replace('/profile')
+        }else if(result.code==1){
+          this.openAlert('手机号或验证码不正确')
+          // alert('手机号或验证码不正确')
+        }
+      },
     },
     components: {
-
+      AlertTip
     },
 };
 </script>

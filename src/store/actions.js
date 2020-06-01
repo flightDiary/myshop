@@ -3,14 +3,14 @@
 import {
     RECEIVE_ADDRESS, 
     RECEIVE_CATEGORYS, 
-    RECEIVE_SHOPS
+    RECEIVE_SHOPS,
+    RECEIVE_USER_INFO
 } from './mutation-types'
 
 import {
     reqAddress,
     reqCategory,
     reqShops,
-    // reqUserInfo,
     // reqLogout,
     // reqShopGoods,
     // reqShopRatings,
@@ -66,7 +66,15 @@ export default {
         commit(RECEIVE_SHOPS,{
             shops:result.data
         })
+    },
+
+
+    //获取个人信息（登陆）
+    async recordUser({commit},user){
+        console.log(user)
+        
+        commit(RECEIVE_USER_INFO,{
+            userInfo:user
+        })
     }
-
-
 }
