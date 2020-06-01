@@ -16,7 +16,10 @@
                     </li>
                   </ul>
                   </section>
+
                   <section class="shop_rating_order">
+
+                  <!-- 打分组件 -->
                   <section class="shop_rating_order_left">                    
                     <div class="star star-24">
                       <span class="star-item on"></span>

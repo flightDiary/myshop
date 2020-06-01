@@ -19,6 +19,7 @@ export const  reqShops =({latitude,longitude}) =>ajax('/api/shops',{latitude,lon
 
 // 6、用户名密码登陆
 export const reqPwdLogin = ({name, pwd, captcha}) => ajax(BASE_URL+'/login_pwd', {name, pwd, captcha}, 'POST')
+
 // 7、发送短信验证码
 export const reqSendCode = (phone) => ajax(BASE_URL+'/sendcode', {phone})
 // 8、手机号验证码登陆

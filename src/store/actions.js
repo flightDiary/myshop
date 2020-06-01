@@ -55,15 +55,11 @@ export default {
         })
     },
 
-    // export const  reqShops =({latitude,longitude}) =>ajax('/api/shops',{latitude,longitude})
-
     // 方法三 触发商家数组(获取商家) shops
     async getShops({commit,state}){
-
         // let latitude=state.latitude
         // let longitude=state.longitude
         let {latitude,longitude}=state
-
         let result=await reqShops({latitude,longitude})
         console.log(result)
 
@@ -72,6 +68,5 @@ export default {
         })
     }
 
-    
 
 }

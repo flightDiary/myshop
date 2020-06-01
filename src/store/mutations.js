@@ -22,7 +22,7 @@ export default {
         // console.log(categorysx)
     },
     //存储商家信息RECEIVE_SHOPS
-    [RECEIVE_SHOPS](state, { shops }) {
+    [RECEIVE_SHOPS](state, {shops}) {
         state.shops = shops
         console.log(shops)
     },
